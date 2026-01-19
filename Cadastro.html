@@ -1,85 +1,73 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="cadastro.css">
-    
+  <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cadastro</title>
+      <!--Normalise-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+        integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--Fontes Roboto-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+        <!--Meu css-->
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/cadastro.css">
+
 </head>
+
 <body>
-    <div id="foto">
-        <img src="logo.png" alt="Alienne" style="height:100px; ">
-    </div>
 
-    <div class="container_form">
-        <h1>Formulário de Cadastro</h1>
-        <form class="form" action="https://script.google.com/macros/s/AKfycbxpkq8Hf5gND2CR_slUr-FvwgcTTa2GR_QXoyebOMp4fIwlq6VBOLWe7_wk2SSwWMp4/exec" method="POST">
-            
-            <div class="form_grupo">
-                <label for="nome" class="form_label">Nome da Empresa</label>
-                <input type="text" name="nome" class="form_input" id="nome" placeholder="Nome" required>
-            </div>
-            
-            <div class="form_grupo">
-                <label for="contato" class="form_label">Nome do Responsavel</label>
-                <input type="contato" name="contato" class="form_input" id="contato" placeholder="Nome" required>
-            </div>
-            
-            <div class="form_grupo">
-                <label for="datanascimento" class="form_label">Numero de vidas</label>
-                <input type="number" name="vidas" class="form_input" id="vidas" placeholder="vidas" required>
-            </div>        
-            <div class="form_grupo">
-                
-                <label for="cidade" class="text">Cidade</label>
-                <select name="cidade" class="cidade" required>
-                    
-                    <option selected disabled class="form_select_option" value="">Selecione</option>
-                    <option value="Santos" class="form_select_option">Santos</option>
-                    <option value="Praia Grande" class="form_select_option">Praia Grande </option>
-                    <option value="São Vicente" class="form_select_option">São Vicente</option>                    
-                    <option value="Guaruja" class="form_select_option">Guarujá</option>                    
-                
-                </select>
-            </div>
-           
-          
-            
-                <div class="submit">
-                  <input type="hidden" name="acao" value="enviar">
-                  <button type="submit" name="Submit" class="submit_btn"> Cadastrar </button>                
-                </div>
+  <div class="logo" id="logo">
+    <img src="./image/logo.png" alt="Alienne">  </div>
+
+  <div class="form" id = "form">
+    <h1>Formulário de Cadastro</h1>
+    <form class="form"
+      action="https://script.google.com/macros/s/AKfycbxpkq8Hf5gND2CR_slUr-FvwgcTTa2GR_QXoyebOMp4fIwlq6VBOLWe7_wk2SSwWMp4/exec"
+      method="POST">
+
+      <div class="form_grupo">
+        <label for="nome" class="form_label">Nome da Empresa</label>
+        <input type="text" name="nome" class="form_input" id="nome" placeholder="Nome da Empresa" required>
+      </div>
+
+      <div class="form_grupo">
+        <label for="contato" class="form_label">Nome do Responsavel</label>
+        <input type="contato" name="contato" class="form_input" id="contato" placeholder="Nome do Responsavel" required>
+      </div>
+
+      <div class="form_grupo">
+        <label for="datanascimento" class="form_label">Numero de vidas</label>
+        <input type="number" name="vidas" class="form_input" id="vidas" placeholder="vidas" required>
+      </div>
+      <div class="form_grupo">
+        <label for="cidade" class="txt">Cidade</label>
+
+        <select name="cidade" class="form_input" required>
+          <option selected disabled class="form_select_option" value="">Selecione</option>
+          <option value="Santos" class="form_select_option">Santos</option>
+          <option value="Praia Grande" class="form_select_option">Praia Grande </option>
+          <option value="São Vicente" class="form_select_option">São Vicente</option>
+          <option value="Guaruja" class="form_select_option">Guarujá</option>
+        </select>
+
+      </div>
+      <br></br>
+
+      <div class="submit">
+        <input type="hidden" name="acao" value="enviar">
+        <button type="submit" name="Submit" class="submit_btn"> Cadastrar </button>
+      </div>
+
+    </form>
     
-        </form>
- <script>
-    const form = document.getElementById("cadastroForm");
-
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const formData = new FormData(form);
-
-      fetch("https://script.google.com/macros/s/AKfycbxpkq8Hf5gND2CR_slUr-FvwgcTTa2GR_QXoyebOMp4fIwlq6VBOLWe7_wk2SSwWMp4/exec", {
-        method: "POST",
-        body: formData
-      })
-      .then(res => res.text())
-      .then(res => {
-        if (res.includes("OK")) {
-          alert("Cadastro enviado com sucesso!");
-          // Recarrega a página
-          window.location.reload();
-        } else {
-          alert("Erro ao salvar: " + res);
-        }
-      })
-      .catch(err => {
-        alert("Erro na conexão com o servidor.");
-        console.error(err);
-      });
-    });
-  </script>
+    <script src="js/main.js"></script>
 </body>
+
 </html>
