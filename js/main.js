@@ -1,3 +1,9 @@
+function Cliente (nome, nomeRepresentante, vidas){
+  this.nome = nome,
+  this.nomeRepresentante = nomeRepresentante,
+  this.vidas = vidas
+}
+
 const container_form = {}
 
 
@@ -10,8 +16,7 @@ function container_form(form){
     return form
 }
 
-/* function form(form){
- const FORM = document.getElementById("cadastroForm");
+const FORM = document.getElementById("cadastroForm");
 
     FORM.addEventListener("submit", function (e) {
       e.preventDefault();
@@ -27,7 +32,7 @@ function container_form(form){
         if (res.includes("OK")) {
           alert("Cadastro enviado com sucesso!");
           // Recarrega a página, COLOCAR AS VARIAVEIS CONSTANTES COM LETRA MAIUSULA
-          window.location.reload();
+          window.location.reload("Cadastro.html");
         } else {
           alert("Erro ao salvar: " + res);
         }
@@ -36,4 +41,7 @@ function container_form(form){
         alert("Erro na conexão com o servidor.");
         console.error(err);
       });
-    })*/
+      FORM.reset();
+    })
+
+    
