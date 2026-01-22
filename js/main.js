@@ -1,47 +1,50 @@
-function Cliente (nome, nomeRepresentante, vidas){
-  this.nome = nome,
-  this.nomeRepresentante = nomeRepresentante,
-  this.vidas = vidas
-}
+const form_input = document.getElementById('form_input');
+const FORM = document.getElementById('FORM');
 
-const container_form = {}
+// ===== SELECT DE CIDADES =====
+const selecaoCidades = [
+  { Cidade: 'Santos' },
+  { Cidade: 'Praia Grande' },
+  { Cidade: 'São Vicente' },
+  { Cidade: 'Cubatão' },
+  { Cidade: 'Guarujá' }
+];
 
+const selecaoHtml = `
+  <option selected disabled value="">Selecione</option>
+` + selecaoCidades.map(c => `<option>${c.Cidade}</option>`).join("");
 
-const CADASTRO = {}
+form_input.innerHTML = selecaoHtml;
 
-function container_form(form){
+// ===== ENVIO DO FORMULÁRIO =====
+FORM.addEventListener("submit", async function (e) {
+  e.preventDefault();
 
-    ``
+  try {
+    const formData = new FormData(FORM);
 
-    return form
-}
-
-const FORM = document.getElementById("cadastroForm");
-
-    FORM.addEventListener("submit", function (e) {
-      e.preventDefault();
-
-      const formData = new FormData(FORM);
-
-      fetch("https://script.google.com/macros/s/AKfycbxpkq8Hf5gND2CR_slUr-FvwgcTTa2GR_QXoyebOMp4fIwlq6VBOLWe7_wk2SSwWMp4/exec", {
+    const response = await fetch(
+      "https://script.google.com/macros/s/AKfycbxpkq8Hf5gND2CR_slUr-FvwgcTTa2GR_QXoyebOMp4fIwlq6VBOLWe7_wk2SSwWMp4/exec",
+      {
         method: "POST",
         body: formData
-      })
-      .then(res => res.text())
-      .then(res => {
-        if (res.includes("OK")) {
-          alert("Cadastro enviado com sucesso!");
-          // Recarrega a página, COLOCAR AS VARIAVEIS CONSTANTES COM LETRA MAIUSULA
-          window.location.reload("Cadastro.html");
-        } else {
-          alert("Erro ao salvar: " + res);
-        }
-      })
-      .catch(err => {
-        alert("Erro na conexão com o servidor.");
-        console.error(err);
-      });
-      FORM.reset();
-    })
+      }
+    );
 
-    
+    const resText = (await response.text()).trim();
+    console.log("Resposta do servidor:", resText);
+
+    if (resText.toLowerCase().includes("sucesso")) {
+      alert("Cadastro enviado com sucesso!");
+      FORM.reset(); // limpa para limpar o formulario quando salva
+      window.location.href = "Cadastro.html";
+    } else {
+      alert("Erro ao salvar: " + resText);
+    }
+
+  } catch (err) {
+    console.error(err);
+    alert("Erro na conexão com o servidor.");
+  }
+});
+

@@ -30,7 +30,7 @@
     <h1>Formulário de Cadastro</h1>
     <form class="form"
       action="https://script.google.com/macros/s/AKfycbxpkq8Hf5gND2CR_slUr-FvwgcTTa2GR_QXoyebOMp4fIwlq6VBOLWe7_wk2SSwWMp4/exec"
-      method="POST">
+      method="POST" id="FORM">
 
       <div class="form_grupo">
         <label for="nome" class="form_label">Nome da Empresa</label>
@@ -48,21 +48,14 @@
       </div>
       <div class="form_grupo">
         <label for="cidade" class="txt">Cidade</label>
-
-        <select name="cidade" class="form_input" required>
-          <option selected disabled class="form_select_option" value="">Selecione</option>
-          <option value="Santos" class="form_select_option">Santos</option>
-          <option value="Praia Grande" class="form_select_option">Praia Grande </option>
-          <option value="São Vicente" class="form_select_option">São Vicente</option>
-          <option value="Guaruja" class="form_select_option">Guarujá</option>
-        </select>
-
+        <select name="cidade" class="form_input" id="form_input"></select>
+        
       </div>
       <br></br>
 
       <div class="submit">
         <input type="hidden" name="acao" value="enviar">
-        <button type="submit" name="Submit" class="submit_btn"> Cadastrar </button>
+        <button type="submit" name="Submit" class="submit_btn" id="cadastrar"> Cadastrar </button>
       </div>
 
     </form>
