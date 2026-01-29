@@ -1,0 +1,13 @@
+.dia table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
